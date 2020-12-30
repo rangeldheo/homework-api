@@ -15,7 +15,11 @@ class SalesmanController extends Controller
      */
     public function index()
     {
-        //
+        return response()->json([
+            'data'=>[
+                'salesmen'=> Salesman::paginate(10)
+            ]
+        ]);
     }
 
     /**
@@ -36,7 +40,11 @@ class SalesmanController extends Controller
      */
     public function store(SalesmanRequest $request)
     {
-        //
+        return response()->json([
+            'data'=> [
+                'created'=>Salesman::create($request->all())
+            ]
+        ]);
     }
 
     /**
