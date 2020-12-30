@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SalesmanRequest;
 use App\Models\Salesman;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,11 @@ class SalesmanController extends Controller
      */
     public function index()
     {
-        //
+        return response()->json([
+            'data'=>[
+                'salesmen'=> Salesman::paginate(10)
+            ]
+        ]);
     }
 
     /**
@@ -33,9 +38,13 @@ class SalesmanController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SalesmanRequest $request)
     {
-        //
+        return response()->json([
+            'data'=> [
+                'created'=>Salesman::create($request->all())
+            ]
+        ]);
     }
 
     /**
