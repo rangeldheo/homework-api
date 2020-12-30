@@ -17,9 +17,9 @@ class CreateSalesTable extends Migration
         Schema::create('sales', function (Blueprint $table) {
             $table->id();
 
-            $table->foreignId('user_id')
+            $table->foreignId('salesmen_id')
                 ->references('id')
-                ->on('users')
+                ->on('salesmen')
                 ->onDelete('cascade');
 
             $table->decimal('value',16,2)->default(0)->comment('Valor da venda');
