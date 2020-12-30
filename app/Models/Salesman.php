@@ -10,4 +10,12 @@ class Salesman extends Model
         'name',
         'email'
     ];
+
+    /**
+     * Retorna as vendas do vendedor
+     */
+
+    public function sales(){
+        return $this->hasMany(Sale::class);
+    }
 }
