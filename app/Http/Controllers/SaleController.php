@@ -18,8 +18,18 @@ class SaleController extends Controller
     {
         $sale = Sale::create($request->all());
         return response()->json([
-            'data'=> [
-                'venda'=>Sale::with('vendedor')->find($sale->id)
+            'data' => [
+                'venda' => Sale::with('vendedor')->find($sale->id)
+            ]
+        ]);
+    }
+
+
+    public function index()
+    {
+        return response()->json([
+            'data' => [
+                'total_vendas' => Sale::onCurrentDate()->sum('value')
             ]
         ]);
     }

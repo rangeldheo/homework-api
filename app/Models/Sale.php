@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Utils\Special;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Sale extends Model
@@ -19,9 +21,9 @@ class Sale extends Model
     ];
 
     protected $casts = [
-        'on_date'    =>'datetime:d/m/Y H:i',
-        'created_at' =>'datetime:d/m/Y H:i',
-        'updated_at' =>'datetime:d/m/Y H:i',
+        'on_date'    => 'datetime:d/m/Y H:i',
+        'created_at' => 'datetime:d/m/Y H:i',
+        'updated_at' => 'datetime:d/m/Y H:i',
     ];
 
     protected $appends = [
@@ -39,17 +41,27 @@ class Sale extends Model
      * ======================================================================
      * @return void
      */
-    public function getComissaoAttribute(){
+    public function getComissaoAttribute()
+    {
         $comissao =  ($this->value * Sale::COMISSAO) / 100;
-        return number_format($comissao,2,',','.');
+        return number_format($comissao, 2, ',', '.');
     }
 
-    public function getValorVendaAttribute(){
-        return 'R$' . number_format($this->value,2,',','.');
+    public function getValorVendaAttribute()
+    {
+        return 'R$' . number_format($this->value, 2, ',', '.');
     }
 
     public function vendedor()
     {
         return $this->belongsTo(Salesman::class, 'salesmen_id');
+    }
+
+    public function scopeOnCurrentDate($query)
+    {
+        $carbon = Carbon::now();
+        $from   = $carbon->format('Y-m-d') . Special::SPACE . '00:00:00';
+        $to     = $carbon->format('Y-m-d') . Special::SPACE . '23:59:59';
+        return $query->whereBetween('on_date', [$from, $to]);
     }
 }

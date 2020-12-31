@@ -16,7 +16,7 @@ class SalesmanController extends Controller
     {
         return response()->json([
             'data'=>[
-                'salesmen'=> Salesman::paginate(10)
+                'vendedores'=> Salesman::paginate(10)
             ]
         ]);
     }
@@ -46,7 +46,8 @@ class SalesmanController extends Controller
     {
         return response()->json([
             'data'=> [
-                'vendedor'=>Salesman::with('vendas')->find($salesman->id)
+                'vendedores'=>Salesman::with('vendas')
+                ->find($salesman->id)
             ]
         ]);
     }
