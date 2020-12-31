@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\SalesmanRequest;
 use App\Models\Salesman;
-use Illuminate\Http\Request;
 
 class SalesmanController extends Controller
 {
@@ -20,16 +19,6 @@ class SalesmanController extends Controller
                 'salesmen'=> Salesman::paginate(10)
             ]
         ]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
     }
 
     /**
@@ -60,39 +49,5 @@ class SalesmanController extends Controller
                 'vendedor'=>Salesman::with('vendas')->find($salesman->id)
             ]
         ]);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Salesman  $salesman
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Salesman $salesman)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Salesman  $salesman
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Salesman $salesman)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Salesman  $salesman
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Salesman $salesman)
-    {
-        //
     }
 }
