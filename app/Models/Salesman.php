@@ -15,7 +15,7 @@ class Salesman extends Model
      * Retorna as vendas do vendedor
      */
 
-    public function sales(){
-        return $this->hasMany(Sale::class);
+    public function vendas(){
+        return $this->hasMany(Sale::class,'salesmen_id');
     }
 }

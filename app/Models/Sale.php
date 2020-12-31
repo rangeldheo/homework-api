@@ -11,4 +11,8 @@ class Sale extends Model
         'value',
         'on_date'
     ];
+
+    public function vendedor(){
+        return $this->belongsTo(Salesman::class,'salesmen_id');
+    }
 }
