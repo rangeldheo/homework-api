@@ -17,7 +17,7 @@ class CreateSalesmenTable extends Migration
             $table->id();
 
             $table->string('name',80)->comment('nome de vendedor');
-            $table->string('email',80)->comment('emailde vendedor');
+            $table->string('email',80)->unique()->comment('emailde vendedor');
 
             $table->timestamps();
         });
