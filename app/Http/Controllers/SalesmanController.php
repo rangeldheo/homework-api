@@ -42,7 +42,7 @@ class SalesmanController extends Controller
     {
         return response()->json([
             'data'=> [
-                'created'=>Salesman::create($request->all())
+                'vendedor'=>Salesman::create($request->all())
             ]
         ]);
     }
@@ -55,7 +55,11 @@ class SalesmanController extends Controller
      */
     public function show(Salesman $salesman)
     {
-        //
+        return response()->json([
+            'data'=> [
+                'vendedor'=>Salesman::with('vendas')->find($salesman->id)
+            ]
+        ]);
     }
 
     /**

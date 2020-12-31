@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SalesRequest;
 use App\Models\Sale;
 use Illuminate\Http\Request;
 
@@ -33,9 +34,14 @@ class SaleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SalesRequest $request)
     {
-        //
+        $sale = Sale::create($request->all());
+        return response()->json([
+            'data'=> [
+                'venda'=>Sale::with('vendedor')->find($sale->id)
+            ]
+        ]);
     }
 
     /**

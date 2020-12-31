@@ -16,4 +16,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'v1'], function () {
     Route::resource('salesmen', 'SalesmanController');
+    Route::resource('sales',    'SaleController');
 });
