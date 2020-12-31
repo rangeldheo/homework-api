@@ -24,7 +24,8 @@ class SalesmanRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name'  =>'required|max:80',
+            'email' =>'required|max:80|unique:salesmen,email,'.$this->salesman['id'],
         ];
     }
 }
