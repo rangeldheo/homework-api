@@ -23,6 +23,7 @@ DB_USERNAME=seu_usuario
 
 DB_PASSWORD=sua_senha
 
+Rode o comando **php artisan key:generate** para gerar a chave do app Laravel necessária
 
 ## Criando mockup de dados
 
