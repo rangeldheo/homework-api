@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\SalesmanRequest;
 use App\Models\Salesman;
+use Illuminate\Support\Facades\Request;
 
 class SalesmanController extends Controller
 {
@@ -14,9 +15,14 @@ class SalesmanController extends Controller
      */
     public function index()
     {
+        if(Request::get('page')){
+            $salesmen = Salesman::paginate(10);
+        }else{
+            $salesmen = Salesman::all();
+        }
         return response()->json([
             'data'=>[
-                'vendedores'=> Salesman::paginate(10)
+                'vendedores'=>$salesmen
             ]
         ]);
     }
