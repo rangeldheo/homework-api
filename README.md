@@ -10,12 +10,19 @@ Crie um arquivo .env na pasta raiz e configure o acesso a base de dados
 
 As configurações básicas seguem a convenção do Laravel. Usei MySql
 
+
 DB_CONNECTION=mysql
+
 DB_HOST=127.0.0.1
+
 DB_PORT=3306
+
 DB_DATABASE=homework_api
+
 DB_USERNAME=seu_usuario
+
 DB_PASSWORD=sua_senha
+
 
 ## Criando mockup de dados
 
