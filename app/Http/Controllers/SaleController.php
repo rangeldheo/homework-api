@@ -24,12 +24,21 @@ class SaleController extends Controller
         ]);
     }
 
-
+    /**
+     * Retorna o resultado da soma das vendas do dia atual
+     *
+     * @return void
+     */
     public function index()
     {
         return response()->json([
             'data' => [
-                'total_vendas' => Sale::onCurrentDate()->sum('value')
+                'total_vendas' => number_format(
+                    Sale::onCurrentDate()->sum('value'),
+                    2,
+                    ',',
+                    '.'
+                )
             ]
         ]);
     }

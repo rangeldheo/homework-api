@@ -52,7 +52,7 @@ class SalesmanController extends Controller
     {
         return response()->json([
             'data'=> [
-                'vendedores'=>Salesman::with('vendas')
+                'vendedor'=>Salesman::with('vendas')
                 ->find($salesman->id)
             ]
         ]);
